@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -12,7 +13,8 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   constructor(
-    private auth: AuthService,
+    private auth: AuthService,   
+    private token: TokenService,   
     private router: Router,
     private toastController: ToastController
   ) { }
@@ -30,6 +32,7 @@ export class LoginPage implements OnInit {
       this.auth.login(value).subscribe({
         next: res => {
           console.log("Success Login")
+          this.token.saveToken(res.access_token)
           this.router.navigate(['/home']);
           this.loginForm.reset();
         },

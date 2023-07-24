@@ -79,6 +79,9 @@ class AuthController extends Controller
 
     public function me(Request $request)
     {
+        if (!Auth::check()) {
+            return response()->json(['error' => 'User is unauthenticated'], 401);
+        }
         return $request->user();
     }
 

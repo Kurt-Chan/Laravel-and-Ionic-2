@@ -23,6 +23,20 @@ export class AuthService {
     return this.httpClient.post(environment.api + 'signin', json, {headers: header})
   }
 
+  logout(): Observable<any>{
+    let token = this.tokenService.getToken();
+    return this.httpClient.post(environment.api + 'logout', token)
+  }
+
+  // isLoggedIn(){
+  //   return this.httpClient.get(environment.api + 'me', {headers: header}) 
+  // }
+
+  isLoggedIn(): Observable<any>{
+    let token = this.tokenService.getToken();
+    return this.httpClient.post(environment.api + 'me', token, {headers: header})
+  }
+
 
 
 }
