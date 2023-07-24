@@ -1,0 +1,135 @@
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>
+        <h1>Create an account</h1>
+      </ion-card-title>
+      <ion-text color="Light">
+        We want to know you more
+      </ion-text>
+    </ion-card-header>
+
+    <hr>
+    <ion-card-content class="ion-text-center">
+      <form [formGroup]="signInForm" (ngSubmit)="createAcc(signInForm.value)">
+        <ion-list [inset]="true" lines="none">
+          <ion-item lines="full">
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input type="text" placeholder="" formControlName = "firstName"></ion-input>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.firstName">
+              <div class="error-message"
+                *ngIf="signInForm.get('firstName')!.hasError(validation.type) && (signInForm.get('firstName')!.dirty || signInForm.get('firstName')!.touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type="text" placeholder="" formControlName = "lastName"></ion-input>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.lastName">
+              <div class="error-message"
+                *ngIf="signInForm.get('lastName')!.hasError(validation.type) && (signInForm.get('lastName')!.dirty || signInForm.get('lastName')!.touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item lines="full">
+            <ion-select label="Gender" placeholder="Select gender" formControlName = "gender">
+              <ion-select-option value="Male">Male</ion-select-option>
+              <ion-select-option value="Female">Female</ion-select-option>
+              <ion-select-option value="Prefer not to say">Prefer not to say</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.gender">
+              <div class="error-message"
+                *ngIf="signInForm.get('gender')!.hasError(validation.type) && (signInForm.get('gender')!.dirty || signInForm.get('gender')!.touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" placeholder="" formControlName = "email"></ion-input>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message"
+                *ngIf="signInForm.get('email')!.hasError(validation.type) && (signInForm.get('email')!.dirty || signInForm.get('email')!.touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Username</ion-label>
+            <ion-input type="text" placeholder="" formControlName = "username"></ion-input>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.username">
+              <div class="error-message"
+                *ngIf="signInForm.get('username')!.hasError(validation.type) && (signInForm.get('username')!.dirty || signInForm.get('username')!.touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item lines="full">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" placeholder="" formControlName = "password"></ion-input>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message"
+                *ngIf="signInForm.get('password')!.hasError(validation.type) && (signInForm.get('password')!.dirty || signInForm.get('password')!.touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div> 
+ 
+          <ion-item>
+            <ion-checkbox labelPlacement="end" formControlName="terms"> I accept the <a href="#">Terms and Conditions</a> </ion-checkbox>
+          </ion-item>
+          
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.terms">
+              <div class="error-message"
+                *ngIf="signInForm.get('terms')!.hasError(validation.type) && (signInForm.get('terms')!.dirty || signInForm.get('terms')!.touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+        </ion-list>
+
+        <br>
+
+        <ion-button type="submit" expand="block" shape="round" [disabled]="!signInForm.valid">
+          Create Account
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-text-center">
+    <ion-text color="secondary">
+      <a [routerLink]="['/login']" routerLinkActive="router-link-active" style="text-decoration: underline;">
+        I already have an account.
+      </a>
+    </ion-text>
+  </div>
+</ion-content>
