@@ -82,7 +82,7 @@ class AuthController extends Controller
         if (!Auth::check()) {
             return response()->json(['error' => 'User is unauthenticated'], 401);
         }
-        return $request->user();
+        return Auth::user();
     }
 
     protected function respondWithToken($token)

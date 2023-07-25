@@ -1,13 +1,81 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-searchbar animated="true" placeholder="Looking for something?"></ion-searchbar>
+
+  <div *ngFor="let item of user">
+      <ion-text color="Light">
+        <h1>
+          <b>Hello, {{item.firstName}}! </b>
+        </h1>
+      </ion-text>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>My Profile</ion-card-subtitle>
+          <ion-card-title><b>{{ item.firstName }} {{ item.lastName }}</b></ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list lines="none" color="medium">            
+            <ion-item>
+              <ion-label><b>Username</b></ion-label>
+              <ion-text color="secondary">
+                <h4>{{ item.username }}</h4>
+              </ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label><b>Gender</b></ion-label>
+              <ion-text color="secondary">
+                <h4>{{ item.gender }}</h4>
+              </ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label><b>Email</b></ion-label>
+              <ion-text color="secondary">
+                <h4>{{ item.email }}</h4>
+              </ion-text>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      <ion-button  expand="full"color="danger" (click)="presentAlert()">Logout</ion-button>
+      </ion-card>
+  </div>
+
+  <hr>
+  <ion-text color="secondary">
+    <h1><b>News & Updates</b></h1>
+  </ion-text>
+
+  <ion-card>
+    <img alt="Rainy" src="../../../assets/859858665rain-window-city-gif-21.gif" />
+    <ion-card-header>
+      <ion-card-title><b>It's been raining in Manila</b></ion-card-title>
+      <ion-card-subtitle>Hindi ka ba nilalamig?</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-button expand="block" fill="solid" shape="round" color="success" (click)="presentToast('Ay, kawawa ka naman :(')">Nakahiga, mag-isang nanginginig</ion-button>
+    <ion-button expand="block" color="danger" shape="round" (click)="presentToast('Ang manhid mo naman!')">uhm, Hindi naman</ion-button>
+    <ion-button expand="block" color="primary" fill="clear" (click)="presentToast('Nako, mabobored ka lang.')">
+      <ion-icon name="return-down-forward" slot="end"></ion-icon>
+      Read more
+    </ion-button>
+  </ion-card>
+
+    <ion-card>
+      <img alt="Rainy" src="../../../assets/man-crying-ewgjulv950crqr8m.gif" />
+      <ion-card-header>
+        <ion-card-title><b>Update: Hindi na ikaw</b></ion-card-title>
+        <ion-card-subtitle>Ano ang reaksyon mo?</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-button expand="block" fill="solid" shape="round" color="success" (click)="presentToast('Naks! di na marupok!')">Edi wow!</ion-button>
+      <ion-button expand="block" color="danger" shape="round" (click)="presentToast('I feel you! Okay lang yan :(')">Ouch!</ion-button>
+      <ion-button expand="block" color="primary" fill="clear" (click)="presentToast('Nako, mabobored ka lang.')">
+        <ion-icon name="return-down-forward" slot="end"></ion-icon>
+        Read more
+      </ion-button>
+    </ion-card>
+
+
+
+
 </ion-content>

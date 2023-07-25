@@ -4,10 +4,6 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 
-const header = new HttpHeaders({
-  'Content-type':'application/json'
-})
-
 @Injectable({
   providedIn: 'root'
 })
@@ -15,27 +11,32 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private tokenService: TokenService) { }
 
+  getHeader() {
+    let token = this.tokenService.getToken();
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'Content-type': 'application/json'
+    })
+    return headers;
+  }
+
   login(json: any): Observable<any>{
-    return this.httpClient.post(environment.api + 'login', json, {headers: header})
+    return this.httpClient.post(environment.api + 'login', json, {headers: this.getHeader()})
   }
 
   signin(json: any): Observable<any>{
-    return this.httpClient.post(environment.api + 'signin', json, {headers: header})
+    return this.httpClient.post(environment.api + 'signin', json, {headers: this.getHeader()})
   }
 
   logout(): Observable<any>{
-    let token = this.tokenService.getToken();
-    return this.httpClient.post(environment.api + 'logout', token)
+    return this.httpClient.post(environment.api + 'logout', {}, {headers: this.getHeader()})
   }
-
-  // isLoggedIn(){
-  //   return this.httpClient.get(environment.api + 'me', {headers: header}) 
-  // }
 
   isLoggedIn(): Observable<any>{
-    let token = this.tokenService.getToken();
-    return this.httpClient.post(environment.api + 'me', token, {headers: header})
+    return this.httpClient.post(environment.api + 'me', {},{headers: this.getHeader()})
   }
+
+
 
 
 

@@ -37,17 +37,17 @@ export class LoginPage implements OnInit {
           this.loginForm.reset();
         },
         error: err => {
-          if (err.status = 401) {
+          if (err.status == 401) {
             this.presentToast("Invalid credentials. Please try again.")
           }
           else {
-            this.presentToast("Something went wrong. PLease try again.")
+            this.presentToast("Something went wrong. Please try again.")
           }
         }
     })
-    }
+  }
   
-    async presentToast(message: string) {
+  async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 1500,
