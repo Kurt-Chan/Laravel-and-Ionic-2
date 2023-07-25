@@ -95,6 +95,7 @@ export class SignupPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Success!',
       message: 'You\'re account is successfully registered! Proceed to login to continue.',
+      backdropDismiss: false,
       buttons: [
         {
           text: 'Okay',

@@ -47,7 +47,7 @@ export class HomePage implements OnInit {
     async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Logout',
-      // subHeader: 'May mali ba sa akin at ayaw mo na?',
+      backdropDismiss: false,
       message: 'If you`d still go, I`ll understand and if you`ll stay, I`ll hold your hand.',
       buttons: [
         {
