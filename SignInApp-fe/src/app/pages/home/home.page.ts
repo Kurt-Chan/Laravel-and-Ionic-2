@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
 
   user: any = [];
+  isLoaded: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -22,6 +23,8 @@ export class HomePage implements OnInit {
     private alertController: AlertController,) { }
 
   ngOnInit() {
+    this.isLoaded = true;
+    
     this.auth.isLoggedIn().subscribe({
       next: res => {
         console.log(res)

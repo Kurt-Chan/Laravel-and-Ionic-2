@@ -3,6 +3,57 @@
   <ion-searchbar animated="true" placeholder="Looking for something?"></ion-searchbar>
 
   <div *ngFor="let item of user">
+    <ng-container *ngIf="!isLoaded">
+            <ion-text color="Light">
+              <h1>
+                <ion-skeleton-text [animated]="true" style="width: 80%"></ion-skeleton-text>
+              </h1>
+            </ion-text>
+            <ion-card>
+              <ion-card-header>
+                <ion-card-subtitle>
+                  <ion-skeleton-text [animated]="true" style="width: 30%"></ion-skeleton-text>
+                </ion-card-subtitle>
+                <ion-card-title>
+                  <ion-skeleton-text [animated]="true" style="width: 80%"></ion-skeleton-text>
+                </ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <ion-list lines="none" color="medium">
+                  <ion-item>
+                    <ion-label>
+                      <ion-skeleton-text [animated]="true" style="width: 30%"></ion-skeleton-text>
+                    </ion-label>
+                    <ion-text color="secondary">
+                      <h4>
+                        <ion-skeleton-text [animated]="true" style="width: 60%"></ion-skeleton-text>
+                      </h4>
+                    </ion-text>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <ion-skeleton-text [animated]="true" style="width: 30%"></ion-skeleton-text>
+                    </ion-label>
+                    <ion-text color="secondary">
+                      <ion-skeleton-text [animated]="true" style="width: 60%"></ion-skeleton-text>
+                    </ion-text>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <ion-skeleton-text [animated]="true" style="width: 30%"></ion-skeleton-text>
+                    </ion-label>
+                    <ion-text color="secondary">
+                      <h4>
+                        <ion-skeleton-text [animated]="true" style="width: 60%"></ion-skeleton-text>
+                      </h4>
+                    </ion-text>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+    </ng-container>
+
       <ion-text color="Light">
         <h1>
           <b>Hello, {{item.firstName}}! </b>
@@ -36,7 +87,7 @@
             </ion-item>
           </ion-list>
         </ion-card-content>
-      <ion-button  expand="full"color="danger" (click)="presentAlert()">Logout</ion-button>
+        <ion-button  expand="full"color="danger" (click)="presentAlert()">Logout</ion-button>
       </ion-card>
   </div>
 
